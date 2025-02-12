@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "npm run build",
+    "prepare": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,13 +19,21 @@
     "url": "https://github.com/naomis/router/issues"
   },
   "homepage": "https://github.com/naomis/router#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
   "devDependencies": {
     "@types/express": "^5.0.0",
     "@types/node": "^22.12.0",
-    "@types/request": "^2.48.12",
     "@typescript-eslint/eslint-plugin": "^8.22.0",
     "@typescript-eslint/parser": "^8.22.0",
     "eslint": "^9.20.0",
+    "express": "^4.21.2",
     "prettier": "^3.5.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
@@ -32,8 +41,6 @@
   "dependencies": {
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
-    "express": "^4.21.2",
-    "reflect-metadata": "^0.2.2",
-    "request": "^2.88.2"
+    "reflect-metadata": "^0.2.2"
   }
 }
