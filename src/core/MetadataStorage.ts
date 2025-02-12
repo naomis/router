@@ -1,9 +1,9 @@
-import { RequestHandler } from "express";
+import { RequestHandler } from "express"
 
 export enum MetadataKeys {
-    BASE_PATH = "base_path",
-    ROUTERS = "routers",
-    MIDDLEWARES = "middlewares", // Nouvelle clé pour les middlewares du contrôleur
+  BASE_PATH = "base_path",
+  ROUTERS = "routers",
+  MIDDLEWARES = "middlewares", // Nouvelle clé pour les middlewares du contrôleur
 }
 
 export enum Methods {
@@ -15,12 +15,22 @@ export enum Methods {
 }
 
 export interface IRouter {
-  method: Methods;
-  path: string;
-  handlerName: string | symbol;
-  middlewares?: RequestHandler[];
+  method: Methods
+  path: string
+  handlerName: string | symbol
+  middlewares?: RequestHandler[]
 }
 
 export interface RouteOptions {
-  middlewares?: RequestHandler[];
+  middlewares?: RequestHandler[]
+}
+
+export interface IRouterConfig {
+  apiPrefix?: string
+  controllers: Function[]
+}
+
+export const RouterConfig: IRouterConfig = {
+  apiPrefix: "/api",
+  controllers: [],
 }

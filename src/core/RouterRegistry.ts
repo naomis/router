@@ -1,10 +1,11 @@
 import { Application, RequestHandler } from "express"
 import "reflect-metadata"
-import { IRouter, MetadataKeys } from "./MetadataStorage"
+import { IRouter, IRouterConfig, MetadataKeys, RouterConfig } from "./MetadataStorage"
 
 export class RouterRegistry {
-  static registerRoutes(app: Application, controllers: any[]) {
-    controllers.forEach(controller => {
+  static registerRoutes(app: Application, options: IRouterConfig = RouterConfig) {
+    const apiPrefix = options.apiPrefix || RouterConfig.apiPrefix
+    options.controllers.forEach(controller => {
       const basePath = Reflect.getMetadata(MetadataKeys.BASE_PATH, controller)
       const routers: IRouter[] = Reflect.getMetadata(MetadataKeys.ROUTERS, controller) || []
       const controllerMiddlewares: RequestHandler[] = Reflect.getMetadata(MetadataKeys.MIDDLEWARES, controller) || []
@@ -12,10 +13,11 @@ export class RouterRegistry {
         const { method, path, handlerName, middlewares: routeMiddlewares = [] } = route
         const handler = controller.prototype[handlerName]
         const allMiddlewares = [...controllerMiddlewares, ...routeMiddlewares]
+        const fullPath = `${apiPrefix}${basePath}${path}`
         if (allMiddlewares.length > 0) {
-          app[method](basePath + path, ...allMiddlewares, handler)
+          app[method](fullPath, ...allMiddlewares, handler)
         } else {
-          app[method](basePath + path, handler)
+          app[method](fullPath, handler)
         }
       })
     })
