@@ -1,5 +1,7 @@
 # router
 
+![Tests](https://github.com/naomis/router/actions/workflows/test.yml/badge.svg)
+
 Router est un package Node.js permettant d’utiliser les décorateurs TypeScript avec Express.js pour une gestion plus intuitive des routes.
 
 ## Installation
