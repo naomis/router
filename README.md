@@ -1,13 +1,13 @@
 # router
-Router est un package Node.js permettant d’utiliser les décorateurs TypeScript avec Express.js pour une gestion plus intuitive des routes.
 
+Router est un package Node.js permettant d’utiliser les décorateurs TypeScript avec Express.js pour une gestion plus intuitive des routes.
 
 ## Installation
 
 Pour installer le projet, clonez le dépôt et exécutez la commande suivante :
 
-```
-npm install
+```bash
+npm install git+https://github.com/naomis/router.git
 ```
 
 ## Utilisation
@@ -18,9 +18,9 @@ Pour utiliser express-decorators, importez les décorateurs dans vos fichiers de
 
 ```typescript
 import { Controller, Get, Post, Delete, Put } from "@naomis/router";
-import { authMiddleware } from "../middleware/auth"
-import { routeMiddleware } from "../middleware/routeMiddleware"
-import { uploadSingleFile } from "../src/uploadSingleFile"
+import { authMiddleware } from "../middleware/auth";
+import { routeMiddleware } from "../middleware/routeMiddleware";
+import { uploadSingleFile } from "../src/uploadSingleFile";
 
 @Controller("/users", [authMiddleware]) // Middleware appliqué à toutes les routes du contrôleur
 class UserController {
@@ -47,15 +47,19 @@ class UserController {
 ```
 
 ### Server
+
 ```typescript
 import express from "express";
 import { RouterRegistry } from "@naomis/router";
-import { UserController } from "src/UserController"
+import { UserController } from "src/UserController";
 
 const app = express();
 app.use(express.json());
 
-RouterRegistry.registerRoutes(app, [UserController]);
+RouterRegistry.registerRoutes(app, {
+  apiPrefix: "/api", // <-- Prefixe de l'api par defaut "/api"
+  controllers: [UserController],
+});
 
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
@@ -63,15 +67,19 @@ app.listen(3000, () => {
 ```
 
 ## Tests
+
 Pour exécuter les tests, utilisez la commande suivante :
 
 ```
-npm test
+npx jest
 ```
 
 ## Contribuer
+
 Les contributions sont les bienvenues ! Veuillez soumettre une demande de tirage pour toute amélioration ou correction de bogue.
-+
+
+-
+
 ## License
 
 Ce projet est sous licence MIT.
