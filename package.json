@@ -1,6 +1,6 @@
 {
   "name": "@naomis/router",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Router est un package Node.js permettant d’utiliser les décorateurs TypeScript avec Express.js pour une gestion plus intuitive des routes.",
   "main": "dist/index.js",
   "scripts": {
