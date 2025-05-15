@@ -4,6 +4,8 @@
 
 Router est un package Node.js permettant d’utiliser les décorateurs TypeScript avec Express.js pour une gestion plus intuitive des routes.
 
+https://deepwiki.com/naomis/router/2-getting-started
+
 ## Installation
 
 Pour installer le projet, clonez le dépôt et exécutez la commande suivante :
