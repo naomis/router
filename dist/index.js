@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RouterRegistry = exports.Put = exports.Post = exports.Get = exports.Delete = exports.Controller = void 0;
+exports.RouterRegistry = exports.Put = exports.Post = exports.Patch = exports.Get = exports.Delete = exports.Controller = void 0;
 const RouterRegistry_1 = require("./core/RouterRegistry");
 Object.defineProperty(exports, "RouterRegistry", { enumerable: true, get: function () { return RouterRegistry_1.RouterRegistry; } });
 const Controller_1 = require("./decorators/Controller");
@@ -9,6 +9,8 @@ const Delete_1 = require("./decorators/Delete");
 Object.defineProperty(exports, "Delete", { enumerable: true, get: function () { return Delete_1.Delete; } });
 const Get_1 = require("./decorators/Get");
 Object.defineProperty(exports, "Get", { enumerable: true, get: function () { return Get_1.Get; } });
+const Patch_1 = require("./decorators/Patch");
+Object.defineProperty(exports, "Patch", { enumerable: true, get: function () { return Patch_1.Patch; } });
 const Post_1 = require("./decorators/Post");
 Object.defineProperty(exports, "Post", { enumerable: true, get: function () { return Post_1.Post; } });
 const Put_1 = require("./decorators/Put");

@@ -4,6 +4,7 @@ import { IRouter, MetadataKeys } from "../src/core/MetadataStorage"
 import Controller from "../src/decorators/Controller"
 import { Delete } from "../src/decorators/Delete"
 import { Get } from "../src/decorators/Get"
+import { Patch } from "../src/decorators/Patch"
 import { Post } from "../src/decorators/Post"
 import { Put } from "../src/decorators/Put"
 
@@ -30,6 +31,11 @@ class TestController {
   @Delete("/delete")
   deleteMethod(req: express.Request, res: express.Response) {
     res.status(200).send("Delete method")
+  }
+
+  @Patch("/patch")
+  patchMethod(req: express.Request, res: express.Response) {
+    res.status(200).send("Patch method")
   }
 }
 

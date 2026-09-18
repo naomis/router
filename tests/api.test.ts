@@ -25,4 +25,10 @@ describe("API Endpoints", () => {
     expect(response.status).toBe(200)
     expect(response.text).toBe("Delete method")
   })
+
+  it("should handle PATCH requests", async () => {
+    const response = await request(app).patch("/api/patch").send()
+    expect(response.status).toBe(200)
+    expect(response.text).toBe("Patch method")
+  })
 })
