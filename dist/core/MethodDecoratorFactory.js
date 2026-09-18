@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.methodDecoratorFactory = void 0;
-// import { MethodDecorator } from "../utils/types"
 const MetadataStorage_1 = require("./MetadataStorage");
 const methodDecoratorFactory = (method) => {
     return (path, options = {}) => {

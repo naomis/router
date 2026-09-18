@@ -1,4 +1,3 @@
-// import { MethodDecorator } from "../utils/types"
 import { IRouter, MetadataKeys, Methods, RouteOptions } from "./MetadataStorage"
 
 export const methodDecoratorFactory = (method: Methods) => {

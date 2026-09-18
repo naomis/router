@@ -3,6 +3,7 @@ import { MetadataKeys, Methods } from "../src/core/MetadataStorage"
 import { Controller } from "../src/decorators/Controller"
 import { Delete } from "../src/decorators/Delete"
 import { Get } from "../src/decorators/Get"
+import { Patch } from "../src/decorators/Patch"
 import { Post } from "../src/decorators/Post"
 import { Put } from "../src/decorators/Put"
 
@@ -78,6 +79,20 @@ describe("Delete Decorator", () => {
     const routers = Reflect.getMetadata(MetadataKeys.ROUTERS, TestController)
     const route = routers.find((router: any) => router.handlerName === "testMethod")
     expect(route.method).toBe(Methods.DELETE)
+    expect(route.path).toBe("/test")
+  })
+})
+
+describe("Patch Decorator", () => {
+  it("should define metadata for PATCH method", () => {
+    class TestController {
+      @Patch("/test")
+      testMethod() {}
+    }
+
+    const routers = Reflect.getMetadata(MetadataKeys.ROUTERS, TestController)
+    const route = routers.find((router: any) => router.handlerName === "testMethod")
+    expect(route.method).toBe(Methods.PATCH)
     expect(route.path).toBe("/test")
   })
 })
